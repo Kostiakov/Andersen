@@ -2,14 +2,16 @@ package proxymethods;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CacheProxy implements InvocationHandler {
+
+public class CacheProxy<T> implements InvocationHandler {
 	private Map<String, String> cache = new HashMap<>();
 	private Object obj;
 	
-	public CacheProxy(Object obj) {
+	public CacheProxy(T obj) {
 		this.obj=obj;
 		Method[] methods = obj.getClass().getDeclaredMethods();
 		for(Method m:methods) {
@@ -18,9 +20,20 @@ public class CacheProxy implements InvocationHandler {
 		System.out.println(cache);
 		
 	}
+	
+	
+    public static <I, T extends I> I cache (T t, Class<I> interfaceClass) {
+        CacheProxy cacheableDecorator = new CacheProxy(t);
+        return (I) Proxy.newProxyInstance(interfaceClass.getClassLoader(),
+                                          new Class[]{interfaceClass}, cacheableDecorator);
+
+    }
+	
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		
+		//if(method.isAnnotationPresent(Caching.class)) {
 		
 		if (cache.containsKey(method.getName())) {
             String o = cache.get(method.getName());
@@ -35,6 +48,15 @@ public class CacheProxy implements InvocationHandler {
             }
         }
         return method.invoke(args);
+        
+		//}
+		
+		/*else {
+			System.out.println("no cashing");
+			return method.invoke(obj, args);
+			
+		}*/
+        
 	}
 
 }

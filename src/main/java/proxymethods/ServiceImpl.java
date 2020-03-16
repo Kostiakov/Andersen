@@ -2,7 +2,9 @@ package proxymethods;
 
 public class ServiceImpl implements Service {
 
+	
 	@Override
+	@Caching
 	public String doHardWork1(String params) {
 		System.out.println("Impl doHardWork1");
 		return params;
