@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Service service = new ServiceImpl();
-		boolean serialization = true;
+		boolean serialization = false;
 		
         List<String> symbols = Arrays.asList(
                 "GOOGL", "AMZ", "FB", "MSFT",

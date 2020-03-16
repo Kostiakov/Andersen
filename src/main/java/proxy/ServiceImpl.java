@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class ServiceImpl implements Service {
 
+	@Cache
 	public double doHardWork(String symbols) {
 		Random random = new Random();
         try {

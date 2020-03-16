@@ -1,6 +1,8 @@
 package proxy;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,6 +19,63 @@ public class CachedService implements Service, Serializable {
 
 	public double doHardWork(String symbols) {
 		
+		String methodName = "";
+
+        methodName = "doHardWork";
+		
+		String serviceName = "proxy.ServiceImpl";
+        Class<?> serviceImpl;
+        Method getNameMethod=null;
+        Object newService=null;
+		try {
+			serviceImpl = Class.forName(serviceName);
+			newService = serviceImpl.newInstance(); // invoke empty constructor
+			try {
+				getNameMethod = newService.getClass().getMethod(methodName, String.class);
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IllegalAccessException e1) {
+			e1.printStackTrace();
+		}
+		catch (InstantiationException e1) {
+			e1.printStackTrace();
+		}// convert string classname to class
+        
+
+        
+        
+        
+        
+		
+		if(!getNameMethod.isAnnotationPresent(Cache.class)) {
+			getNameMethod.setAccessible(true);
+			try {
+				double d1 = (double) getNameMethod.invoke(newService, symbols); 
+				
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return service.doHardWork(symbols);
+		}
+		else {
+		
+			
+			
+			
 		//при сериализации в файл на диске
 		if(serialization) {
 		
@@ -64,7 +123,7 @@ public class CachedService implements Service, Serializable {
 		            stockSymbol -> service.doHardWork(stockSymbol));
 			return d;
 		}
-
+		}
 	}
 
 }
