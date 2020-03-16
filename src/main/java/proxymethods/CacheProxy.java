@@ -1,5 +1,6 @@
 package proxymethods;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -32,8 +33,9 @@ public class CacheProxy<T> implements InvocationHandler {
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		
-		//if(method.isAnnotationPresent(Caching.class)) {
+		Annotation[] anno = method.getAnnotations();
+		System.out.println(anno.length);
+		if(method.isAnnotationPresent(Caching.class)) {
 		
 		if (cache.containsKey(method.getName())) {
             String o = cache.get(method.getName());
@@ -49,13 +51,13 @@ public class CacheProxy<T> implements InvocationHandler {
         }
         return method.invoke(args);
         
-		//}
+		}
 		
-		/*else {
+		else {
 			System.out.println("no cashing");
 			return method.invoke(obj, args);
 			
-		}*/
+		}
         
 	}
 

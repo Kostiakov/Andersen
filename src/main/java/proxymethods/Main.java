@@ -11,8 +11,8 @@ public class Main {
 		proxyService.doHardWork1("123");
 		proxyService.doHardWork1("123");*/
 		Service proxyService=CacheProxy.cache(service, Service.class);
-		proxyService.doHardWork1("123");
-		proxyService.doHardWork1("123");
+		System.out.println(proxyService.doHardWork1("123"));
+		System.out.println(proxyService.doHardWork1("124"));
 		
 	}
 
