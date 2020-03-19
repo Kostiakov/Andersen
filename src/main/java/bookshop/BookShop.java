@@ -12,19 +12,17 @@ public class BookShop {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
-		Connection connection = null;
-		connection=DriverManager.getConnection(url,"hbstudent","hbstudent");
+		try(Connection connection=DriverManager.getConnection(url,"hbstudent","hbstudent")){
 		
 		System.out.println("Connection successed");
 		
 		String sql = "SELECT * FROM literature";
 		
-		Statement statement = null;
-		statement=connection.createStatement();
+		Statement statement=connection.createStatement();
 		
 		ResultSet set = statement.executeQuery(sql);
 		
-		List<Literature> list = new ArrayList<>();
+		List<LiteratureNew> list = new ArrayList<>();
 		
 		 while (set.next()) {
 	            String author = set.getString("author");
@@ -35,11 +33,11 @@ public class BookShop {
 	            String type = set.getString("type");
 	            System.out.println(author + title + publisher + year + type);
 	            if(type.equals("BOOK")) {
-	            	Literature book = new Book(author, title, publisher, year);
+	            	LiteratureNew book = new BookNew(author, title, publisher, year);
 	            	list.add(book);
 	            }
 	            if(type.equals("MAGAZINE")) {
-	            	Literature magazine = new Magazine(title, publisher, year, numbers_per_year);
+	            	LiteratureNew magazine = new MagazineNew(title, publisher, year, numbers_per_year);
 	            	list.add(magazine);
 	            }
 		 }
@@ -57,7 +55,7 @@ public class BookShop {
 				if(i==2) {
 					System.out.println("¬ведите тип литературы: 1 - книга, 2 - журнал");
 					int j = scanner.nextInt();
-					Literature litera = null;
+					LiteratureNew litera = null;
 					if(j==1) {
 						System.out.println("¬ведите следующие данные через Enter");
 						System.out.println("јвтор, название, издатель, год");
@@ -66,12 +64,12 @@ public class BookShop {
 						String publisher = scanner.next();
 						String type = "BOOK";
 						int year = scanner.nextInt();
-						litera = new Book(author, title, publisher, year);
+						litera = new BookNew(author, title, publisher, year);
 						list.add(litera);
 						sql="INSERT INTO bookshop.literature(author, title, publisher, year, type) "
 								+ "VALUES (\'" + author + "\', \'" + title + "\', \'" + publisher + "\', \'" + year + "\', \'" + type + "\');";
 						statement = connection.createStatement();
-						statement.executeUpdate(sql);
+						//statement.executeUpdate(sql);
 						statement.close();
 					}
 					if(j==2) {
@@ -82,12 +80,12 @@ public class BookShop {
 						int year = scanner.nextInt();
 						int numbersPerYear = scanner.nextInt();
 						String type = "MAGAZINE";
-						litera = new Magazine(publisher, title, year, numbersPerYear);
+						litera = new MagazineNew(publisher, title, year, numbersPerYear);
 						list.add(litera);
 						sql="INSERT INTO bookshop.literature(publisher, title, year, numbers_per_year, type) "
 								+ "VALUES (\'" + publisher + "\', \'" + title + "\', \'" + year + "\', \'" + numbersPerYear + "\', \'" + type + "\');";
 						statement = connection.createStatement();
-						statement.executeUpdate(sql);
+						//statement.executeUpdate(sql);
 						statement.close();
 					}
 				}
@@ -95,7 +93,7 @@ public class BookShop {
 					break;
 				}
 				}
-		 connection.close();
+		}
 		 
 	}	 
 }
