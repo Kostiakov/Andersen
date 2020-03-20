@@ -21,6 +21,7 @@ public class HibernateTest {
 	private SessionFactory factory;
 	private Session session;
 	private Transaction tr;
+	private int number;
 	
 	@Before
 	public void init() {
@@ -32,6 +33,7 @@ public class HibernateTest {
 				buildSessionFactory();
 				session = factory.getCurrentSession();
 				tr = session.beginTransaction();
+				number=11;
 	}
 	
 	@After
@@ -44,7 +46,7 @@ public class HibernateTest {
 	public void testGetList() {
 		listNew=session.createQuery("from LiteratureNew").list();
 		System.out.println(listNew);
-		assertEquals(9,listNew.size());
+		assertEquals(number,listNew.size());
 	}
 	
 	@Test
@@ -53,7 +55,7 @@ public class HibernateTest {
 		session.save(litera);
 		listNew=session.createQuery("from LiteratureNew").list();
 		System.out.println(listNew);
-		assertEquals(10,listNew.size());
+		assertEquals(number+1,listNew.size());
 	}
 	
 	@Test
@@ -62,7 +64,7 @@ public class HibernateTest {
 		session.delete(litera);
 		listNew=session.createQuery("from LiteratureNew").list();
 		System.out.println(listNew);
-		assertEquals(8,listNew.size());
+		assertEquals(number-1,listNew.size());
 	}
 
 }
