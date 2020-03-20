@@ -14,6 +14,13 @@ public class BookShop {
 	
 	static final String url="jdbc:mysql://localhost:3306/bookshop?useSSL=false&serverTimezone=UTC";
 
+	/*public static List<LiteratureNew> getLiterature(Session session){
+		session.beginTransaction();
+		List<LiteratureNew> listNew=session.createQuery("from LiteratureNew").list();
+		session.getTransaction().commit();
+		return listNew;
+	}*/
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
 		try(SessionFactory factory = new Configuration().
@@ -28,6 +35,8 @@ public class BookShop {
 		session.beginTransaction();
 		
 		List<LiteratureNew> listNew=session.createQuery("from LiteratureNew").list();
+		
+		//List<LiteratureNew> listNew=getLiterature(session);
 		
 		session.getTransaction().commit();
 		

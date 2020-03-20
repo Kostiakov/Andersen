@@ -4,78 +4,62 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import List.MyLinkedList;
 
 public class TestClass {
 	
-		@Test
-		public void sizeTest() {
-		MyLinkedList list = new MyLinkedList();
-		list.add(2);
-		list.add(3);
-		assertEquals(2,list.size());
-	}
-		
-		
-		@Test
-		public void getTest() {
-		MyLinkedList list = new MyLinkedList();
-		list.clear(); // doesn't work without clear()
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		assertEquals(4,list.get(3));
-	}
-		
-		@Test
-		public void removeTest1() {
-		MyLinkedList list = new MyLinkedList();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		list.remove(2);
-		assertEquals(5,list.get(3));
-	}
-		
-		@Test
-		public void removeTest2() {
-		MyLinkedList list = new MyLinkedList();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		list.remove(2);
-		assertEquals(4,list.size());
-	}
-		
-		@Test
-		public void clearTest() {
-		MyLinkedList list = new MyLinkedList();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		list.clear();
-		assertEquals(0,list.size());
-	}
-		
-		@Test
-		public void reverseTest() {
-			MyLinkedList list = new MyLinkedList();
+	private MyLinkedList list;
+	
+		@Before
+		public void init() {
+			list = new MyLinkedList();
 			list.add(1);
 			list.add(2);
 			list.add(3);
 			list.add(4);
 			list.add(5);
+		}
+		
+		@After
+		public void finalize() {
+			list.clear();
+		}
+	
+		@Test
+		public void sizeTest() {
+			assertEquals(5,list.size());
+		}
+		
+		
+		@Test
+		public void getTest() {
+			assertEquals(4,list.get(3));
+		}
+		
+		@Test
+		public void removeTest1() {
+			list.remove(2);
+			assertEquals(5,list.get(3));
+		}
+		
+		@Test
+		public void removeTest2() {
+			list.remove(2);
+			assertEquals(4,list.size());
+		}
+		
+		@Test
+		public void clearTest() {
+			list.clear();
+			assertEquals(0,list.size());
+		}
+		
+		@Test
+		public void reverseTest() {
 			List <Object> newList = new ArrayList<Object>();
 			for(int i=0; i<list.size(); i++) {
 				newList.add(list.get(i));
