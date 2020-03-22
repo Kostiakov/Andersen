@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listClass>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="BOOK">
+        <author>Lem</author>
+        <title>Solaris</title>
+        <publisher>MON</publisher>
+        <year>1961</year>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="BOOK">
+        <author>Remarque</author>
+        <title>Three Comrades</title>
+        <publisher>Hutchinson</publisher>
+        <year>1937</year>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MAGAZINE">
+        <title>The Times</title>
+        <publisher>News UK</publisher>
+        <year>1785</year>
+        <numbersPerYear>365</numbersPerYear>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="BOOK">
+        <author>newAuthor</author>
+        <title>newTitle</title>
+        <publisher>newPublisher</publisher>
+        <year>2000</year>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MAGAZINE">
+        <title>newTitle</title>
+        <publisher>newPublisher</publisher>
+        <year>1999</year>
+        <numbersPerYear>12</numbersPerYear>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="BOOK">
+        <author>Author</author>
+        <title>Title</title>
+        <publisher>Publisher</publisher>
+        <year>2001</year>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MAGAZINE">
+        <title>Publisher</title>
+        <publisher>Title</publisher>
+        <year>2002</year>
+        <numbersPerYear>6</numbersPerYear>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MAGAZINE">
+        <title>TitleNew</title>
+        <publisher>PublisherNew</publisher>
+        <year>2002</year>
+        <numbersPerYear>9</numbersPerYear>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MAGAZINE">
+        <title>NewTitle</title>
+        <publisher>NewPublisher</publisher>
+        <year>2004</year>
+        <numbersPerYear>12</numbersPerYear>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="BOOK">
+        <author>SpringAuthor</author>
+        <title>SpringTitle</title>
+        <publisher>SpringPublisher</publisher>
+        <year>2020</year>
+    </myList>
+    <myList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MAGAZINE">
+        <title>SpringTitle</title>
+        <publisher>SpringPublisher</publisher>
+        <year>2019</year>
+        <numbersPerYear>4</numbersPerYear>
+    </myList>
+</listClass>
