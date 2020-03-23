@@ -1,0 +1,68 @@
+[
+  {
+    "author": "Lem",
+    "title": "Solaris",
+    "publisher": "MON",
+    "year": 1961
+  },
+  {
+    "author": "Remarque",
+    "title": "Three Comrades",
+    "publisher": "Hutchinson",
+    "year": 1937
+  },
+  {
+    "title": "The Times",
+    "publisher": "News UK",
+    "year": 1785,
+    "numbersPerYear": 365
+  },
+  {
+    "author": "newAuthor",
+    "title": "newTitle",
+    "publisher": "newPublisher",
+    "year": 2000
+  },
+  {
+    "title": "newTitle",
+    "publisher": "newPublisher",
+    "year": 1999,
+    "numbersPerYear": 12
+  },
+  {
+    "author": "Author",
+    "title": "Title",
+    "publisher": "Publisher",
+    "year": 2001
+  },
+  {
+    "title": "Publisher",
+    "publisher": "Title",
+    "year": 2002,
+    "numbersPerYear": 6
+  },
+  {
+    "title": "TitleNew",
+    "publisher": "PublisherNew",
+    "year": 2002,
+    "numbersPerYear": 9
+  },
+  {
+    "title": "NewTitle",
+    "publisher": "NewPublisher",
+    "year": 2004,
+    "numbersPerYear": 12
+  },
+  {
+    "author": "SpringAuthor",
+    "title": "SpringTitle",
+    "publisher": "SpringPublisher",
+    "year": 2020
+  },
+  {
+    "title": "SpringTitle",
+    "publisher": "SpringPublisher",
+    "year": 2019,
+    "numbersPerYear": 4
+  }
+]
